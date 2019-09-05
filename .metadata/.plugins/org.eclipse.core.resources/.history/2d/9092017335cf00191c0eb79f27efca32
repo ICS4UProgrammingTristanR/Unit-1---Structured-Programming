@@ -1,0 +1,19 @@
+package HelloWorld;
+
+public class HelloWorld {
+	public static void main(String args[]) {
+	      char[] greetArray = { 'h', 'e', 'l', 'l', 'o', ',' };
+	      char[] worldArray = { 'W', 'o', 'r', 'l', 'd', '!' };
+	      char[] iArray = { 'I'};
+	      char[] amArray = { 'a', 'm'};
+	      char[] tristanArray = { 'T', 'r', 'i', 's', 't', 'a','n', '!' };
+
+	      String greetString = new String(greetArray);
+	      String worldString = new String(worldArray);
+	      String iString = new String(iArray);
+	      String amString = new String(amArray);
+	      String tristanString = new String(tristanArray);
+
+	      System.out.println( greetString + worldString + iString + amString + tristanString );
+	   }
+}
