@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+N:\Classes\Sem1-Fall2019\ICS4U Programming\Royer, Tristan (s450073)\Unit 1 - Structured Programming\.metadata\.plugins\org.eclipse.jdt.core
-2380175872.index
-88478265.index
