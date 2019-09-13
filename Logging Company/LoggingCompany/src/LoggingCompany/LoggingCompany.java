@@ -1,20 +1,27 @@
+/*
+ * Created by: Tristan Royer
+ * Created on: 10/09/19
+ * Created for: ICS4U
+ * Day #3 (Logging Company)
+ * This program gets an input from the user of a length and calculates 
+ * how many logs of that length can be held in a truck.
+*/
 package LoggingCompany;
-
+// imports the ability to utilize java scanner
 import java.util.Scanner;
-import java.io.InputStream;
 public class LoggingCompany {
+// creates a new scanner
 private static Scanner scanner = new Scanner( System.in );
 public static void main(String args[]) {
-// declare variables
+// prints out a request for the user
 	 System.out.print( "Type the length per log: " );
+// assign the value input by the user to a variable
      double length = scanner.nextDouble();
-	 double MAX_WEIGHT = 1100;
-	 double PREMIER_LENGTH = 0.25;
-	 double SECOND_LENGTH = 0.5;
-	 double FINAL_LENGTH = 1;
+     // calculates the number of logs that can be held
 	 double weight = length * 20;
 	 double number_Of_Logs = 1100 / weight ;
-	 System.out.println(number_Of_Logs);
+	 // displays the number of logs.
+	 System.out.println(number_Of_Logs + " logs can be held");
 
 
 }
