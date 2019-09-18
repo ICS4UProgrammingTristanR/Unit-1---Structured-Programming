@@ -5,6 +5,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Group;
 
 public class Micro {
 
@@ -53,80 +54,83 @@ public class Micro {
 		lblNewLabel.setBounds(10, 22, 111, 15);
 		lblNewLabel.setText("Select Which Food:");
 		
-		Button btnSub = new Button(shell, SWT.NONE);
-		btnSub.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) 
-			{
-				 subSelected = true;
-				 pizzaSelected = false;
-				 soupSelected = false;
-				
-				
-			}
-		});
-		btnSub.setBounds(300, 22, 75, 25);
-		btnSub.setText("Sub");
-		
-		Button btnPizza = new Button(shell, SWT.NONE);
-		btnPizza.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				 subSelected = false;
-				 pizzaSelected = true;
-				 soupSelected = false;
-			}
-		});
-		btnPizza.setBounds(10, 70, 75, 25);
-		btnPizza.setText("Pizza");
-		
-		Button btnSoup = new Button(shell, SWT.NONE);
-		btnSoup.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				 subSelected = false;
-				 pizzaSelected = false;
-				 soupSelected = true;
-			}
-		});
-		btnSoup.setBounds(300, 70, 75, 25);
-		btnSoup.setText("Soup");
+
+		final Label lblAnswer = new Label(shell, SWT.NONE);
+		lblAnswer.setBounds(289, 236, 89, 15);
+		lblAnswer.setText("--");
 		
 		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
 		lblNewLabel_1.setBounds(10, 133, 131, 15);
 		lblNewLabel_1.setText("Select number of items:");
 		
-		Button btnOne = new Button(shell, SWT.NONE);
+		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
+		lblNewLabel_2.setBounds(10, 236, 146, 15);
+		lblNewLabel_2.setText("Total time in Microwave is:");
+		
+		Group group = new Group(shell, SWT.NONE);
+		group.setBounds(10, 43, 284, 82);
+		
+		Button radSub = new Button(group, SWT.RADIO);
+		radSub.setBounds(0, 10, 90, 16);
+		radSub.setText("Sub");
+		
+		Button radPizza = new Button(group, SWT.RADIO);
+		radPizza.setBounds(184, 10, 90, 16);
+		radPizza.setText("Pizza");
+		
+		Button radSoup = new Button(group, SWT.RADIO);
+		radSoup.setBounds(0, 60, 90, 16);
+		radSoup.setText("Soup");
+		
+		Group group_1 = new Group(shell, SWT.NONE);
+		group_1.setBounds(10, 148, 284, 82);
+		
+		Button btnOne = new Button(group_1, SWT.NONE);
+		btnOne.setBounds(10, 10, 75, 25);
 		btnOne.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				int totalTime = 0;
+				int totalTime ;
 				
 				
-				if (pizzaSelected == true ) 
-				{ totalTime = 45 * 1 ;
+				if (e.getSource() == radPizza) 
+				{ 
+					totalTime = 45 * 1 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
 				}
+				if (e.getSource() == radSub) 
+				{ 
+					totalTime = 60 * 1 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				if (radSoup.isChecked()){
+				 
+					totalTime = 100 * 1 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				
+				
 				
 			}
 		});
-		btnOne.setBounds(300, 133, 75, 25);
 		btnOne.setText("1");
 		
-		Button btnTwo = new Button(shell, SWT.NONE);
-		btnTwo.setBounds(10, 177, 75, 25);
+		Button btnTwo = new Button(group_1, SWT.NONE);
+		btnTwo.setBounds(107, 10, 75, 25);
+		btnTwo.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			}
+		});
 		btnTwo.setText("2");
 		
-		Button btnThree = new Button(shell, SWT.NONE);
-		btnThree.setBounds(300, 177, 75, 25);
+		Button btnThree = new Button(group_1, SWT.NONE);
+		btnThree.setBounds(199, 10, 75, 25);
 		btnThree.setText("3");
 		
-		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
-		lblNewLabel_2.setBounds(10, 214, 146, 15);
-		lblNewLabel_2.setText("Total time in Microwave is:");
-		
-		Label lblAnswer = new Label(shell, SWT.NONE);
-		lblAnswer.setBounds(299, 214, 89, 15);
-		lblAnswer.setText("--");
 
 	}
 }
