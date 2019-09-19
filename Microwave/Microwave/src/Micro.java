@@ -10,13 +10,18 @@ import org.eclipse.swt.widgets.Group;
 public class Micro {
 
 	protected Shell shell;
+	public boolean pizzaSelected;
+	public boolean subSelected;
+	public boolean soupSelected;
+
+	
 
 	/**
 	 * Launch the application.
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		boolean pizzaSelected;
+		
 		try {
 			Micro window = new Micro();
 			window.open();
@@ -71,14 +76,38 @@ public class Micro {
 		group.setBounds(10, 43, 284, 82);
 		
 		Button radSub = new Button(group, SWT.RADIO);
+		radSub.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				subSelected = true;
+				pizzaSelected = false;
+				soupSelected = false;
+			}
+		});
 		radSub.setBounds(0, 10, 90, 16);
 		radSub.setText("Sub");
 		
 		Button radPizza = new Button(group, SWT.RADIO);
+		radPizza.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				subSelected = false;
+				pizzaSelected = true;
+				soupSelected = false;
+			}
+		});
 		radPizza.setBounds(184, 10, 90, 16);
 		radPizza.setText("Pizza");
 		
 		Button radSoup = new Button(group, SWT.RADIO);
+		radSoup.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				subSelected = false;
+				pizzaSelected = false;
+				soupSelected = true;
+			}
+		});
 		radSoup.setBounds(0, 60, 90, 16);
 		radSoup.setText("Soup");
 		
@@ -90,22 +119,22 @@ public class Micro {
 		btnOne.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				int totalTime ;
+				double totalTime ;
 				
 				
-				if (e.getSource() == radPizza) 
+				if (pizzaSelected == true) 
 				{ 
 					totalTime = 45 * 1 ;
 					lblAnswer.setText("the answer is:" + totalTime) ;
 				
 				}
-				if (e.getSource() == radSub) 
+				if (subSelected == true) 
 				{ 
 					totalTime = 60 * 1 ;
 					lblAnswer.setText("the answer is:" + totalTime) ;
 				
 				}
-				if (radSoup.isChecked()){
+				if (soupSelected == true){
 				 
 					totalTime = 100 * 1 ;
 					lblAnswer.setText("the answer is:" + totalTime) ;
@@ -123,11 +152,55 @@ public class Micro {
 		btnTwo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				double totalTime;
+				if (pizzaSelected == true) 
+				{ 
+					totalTime = 45 * 2 * 1.5  ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				if (subSelected == true) 
+				{ 
+					totalTime = 60 * 2 * 1.5 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				if (soupSelected == true){
+				 
+					totalTime = 100 * 2 * 1.5 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				
 			}
 		});
 		btnTwo.setText("2");
 		
 		Button btnThree = new Button(group_1, SWT.NONE);
+		btnThree.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				double totalTime;
+				if (pizzaSelected == true) 
+				{ 
+					totalTime = 45 * 3 * 2  ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				if (subSelected == true) 
+				{ 
+					totalTime = 60 * 3 * 2 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+				if (soupSelected == true){
+				 
+					totalTime = 100 * 3 * 2 ;
+					lblAnswer.setText("the answer is:" + totalTime) ;
+				
+				}
+			}
+		});
 		btnThree.setBounds(199, 10, 75, 25);
 		btnThree.setText("3");
 		
