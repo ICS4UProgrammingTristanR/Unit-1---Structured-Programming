@@ -12,6 +12,8 @@ public class DiceGame {
 	protected Shell shlDiceGame;
 	public int numberOfGuesses = 0;
 	private Text txtRandom;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -65,6 +67,10 @@ public class DiceGame {
 		
 		txtRandom = new Text(shlDiceGame, SWT.BORDER);
 		txtRandom.setBounds(306, 10, 76, 21);
+		
+		
+		
+	
 		
 		
 		
