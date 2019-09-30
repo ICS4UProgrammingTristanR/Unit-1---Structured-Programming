@@ -42,6 +42,7 @@ public class DiceGame {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
+			
 		}
 	}
 
@@ -57,7 +58,7 @@ public class DiceGame {
 		lblNewLabel.setBounds(10, 10, 223, 15);
 		lblNewLabel.setText("Enter a random number between 1 and 10:");
 		
-		Label lblNumberOfGuesses = new Label(shlDiceGame, SWT.NONE);
+		final Label lblNumberOfGuesses = new Label(shlDiceGame, SWT.NONE);
 		lblNumberOfGuesses.setBounds(10, 127, 189, 15);
 		lblNumberOfGuesses.setText("Number of Guesses before correct:");
 		
@@ -76,22 +77,25 @@ public class DiceGame {
 		
 		Button btnGuess = new Button(shlDiceGame, SWT.NONE);
 		btnGuess.addSelectionListener(new SelectionAdapter() {
+			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				int numberOfGuesses = 0;
+				lblNumberOfGuesses.setText("Number of Guesses: " + numberOfGuesses);
 				Random rndNumber = new Random();
 				int unknownNumber = (rndNumber.nextInt(9) + 1);
 				int userGuess = Integer.parseInt(txtRandom.getText());
 				if (userGuess == unknownNumber) {
-					numberOfGuesses = numberOfGuesses + 1;
+					numberOfGuesses++;
 					lblNumberOfGuesses.setText("Number of Guesses: " + numberOfGuesses);
 					lblRandomNumber.setText("Random number is:" + unknownNumber);
 					
 					}
 				if (userGuess != unknownNumber)
 				{
-					numberOfGuesses = numberOfGuesses + 1;
+					numberOfGuesses++;
+
 					lblNumberOfGuesses.setText("Number of Guesses: " + numberOfGuesses);
+					lblRandomNumber.setText("Random number is: --");
 					
 					
 				};
