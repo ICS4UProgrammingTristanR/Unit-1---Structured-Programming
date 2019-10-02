@@ -1,9 +1,9 @@
-package RockPaperScissors;
+package RollDieConsole;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-public class RockPaperScissors {
+public class RollDieConsole {
 
 	protected Shell shell;
 
@@ -13,7 +13,7 @@ public class RockPaperScissors {
 	 */
 	public static void main(String[] args) {
 		try {
-			RockPaperScissors window = new RockPaperScissors();
+			RollDieConsole window = new RollDieConsole();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
