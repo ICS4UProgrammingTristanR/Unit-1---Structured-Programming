@@ -1,3 +1,10 @@
+/*
+ * Created by: Tristan Royer
+ * Created on: Sept-2019
+ * Created for: ICS4U
+ * Day #5 Einstein Equation
+ * This program calculates an equation using a value input by the user.
+*/
 package einsteinEquation;
 // imports the ability to utilize java scanner
 import java.util.Scanner;
