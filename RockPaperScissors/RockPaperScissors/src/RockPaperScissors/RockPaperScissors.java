@@ -8,19 +8,22 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class RockPaperScissors {
-	boolean playerRock = false;
-	boolean playerPaper = false;
-	boolean playerScissors = false;
-	boolean computerRock = false;
-	boolean computerPaper = false;
-	boolean computerScissors = false;
-	String game = ("tie");
+	public boolean playerRock = false;
+	public boolean playerPaper = false;
+	public boolean playerScissors = false;
+	public boolean computerRock = false;
+	public boolean computerPaper = false;
+	public boolean computerScissors = false;
+	public String game;
+	public int playerScore = 0;
+	public int computerScore = 0;
 	
 
 
-	protected Shell shell;
+	protected Shell shlRockpaperscissors;
 
 	/**
 	 * Launch the application.
@@ -41,9 +44,9 @@ public class RockPaperScissors {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlRockpaperscissors.open();
+		shlRockpaperscissors.layout();
+		while (!shlRockpaperscissors.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -54,15 +57,17 @@ public class RockPaperScissors {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
-		shell.setSize(450, 300);
-		shell.setText("SWT Application");
+		shlRockpaperscissors = new Shell();
+		shlRockpaperscissors.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		shlRockpaperscissors.setSize(450, 300);
+		shlRockpaperscissors.setText("RockPaperScissors");
 		
-		Group grpPlayersChoice = new Group(shell, SWT.NONE);
-		grpPlayersChoice.setText("Player's Choice");
-		grpPlayersChoice.setBounds(0, 10, 222, 85);
+		Group grbPlayerChoice = new Group(shlRockpaperscissors, SWT.NONE);
+		grbPlayerChoice.setBackground(SWTResourceManager.getColor(SWT.COLOR_LINK_FOREGROUND));
+		grbPlayerChoice.setText("Player's Choice");
+		grbPlayerChoice.setBounds(0, 10, 222, 85);
 		
-		Button btnPlayerRock = new Button(grpPlayersChoice, SWT.RADIO);
+		Button btnPlayerRock = new Button(grbPlayerChoice, SWT.RADIO);
 		btnPlayerRock.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -75,7 +80,7 @@ public class RockPaperScissors {
 		btnPlayerRock.setBounds(10, 22, 90, 16);
 		btnPlayerRock.setText("Rock");
 		
-		Button btnPlayerPaper = new Button(grpPlayersChoice, SWT.RADIO);
+		Button btnPlayerPaper = new Button(grbPlayerChoice, SWT.RADIO);
 		btnPlayerPaper.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -87,7 +92,7 @@ public class RockPaperScissors {
 		btnPlayerPaper.setBounds(10, 44, 90, 16);
 		btnPlayerPaper.setText("Paper");
 		
-		Button btnPlayerScissors = new Button(grpPlayersChoice, SWT.RADIO);
+		Button btnPlayerScissors = new Button(grbPlayerChoice, SWT.RADIO);
 		btnPlayerScissors.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -99,7 +104,14 @@ public class RockPaperScissors {
 		btnPlayerScissors.setBounds(10, 66, 90, 16);
 		btnPlayerScissors.setText("Scissors");
 		
-		Group grpPlay = new Group(shell, SWT.NONE);
+
+		Label lblGame = new Label(shlRockpaperscissors, SWT.NONE);
+		lblGame.setBackground(SWTResourceManager.getColor(SWT.COLOR_LINK_FOREGROUND));
+		lblGame.setBounds(228, 10, 196, 15);
+		lblGame.setText("The game is a:");
+		
+		Group grpPlay = new Group(shlRockpaperscissors, SWT.NONE);
+		grpPlay.setBackground(SWTResourceManager.getColor(SWT.COLOR_LINK_FOREGROUND));
 		grpPlay.setText("Play");
 		grpPlay.setBounds(0, 189, 222, 72);
 		
@@ -111,13 +123,20 @@ public class RockPaperScissors {
 		lblComputerScore.setText("Computer's Score:");
 		lblComputerScore.setBounds(10, 45, 110, 15);
 		
+		Button btnNext = new Button(grpPlay, SWT.NONE);
+		
 		Button btnPlay = new Button(grpPlay, SWT.NONE);
 		btnPlay.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
+			
 			// generates a random number to determine the computer's choice
 				int randomChoice = (int)(Math.random() * 3 + 1);
+				
+				grbPlayerChoice.setEnabled(false);
+				btnPlay.setEnabled(false);
+				btnNext.setEnabled(true);
 				
 				if (randomChoice == 1 )
 				{
@@ -149,32 +168,103 @@ public class RockPaperScissors {
 				
 				if (playerRock == true && computerRock == true)
 				{
-					game = tie;
+					game = "draw";
 				}
+				if (playerRock == true && computerPaper == true)
+				{
+					game = "Loss";
+					computerScore ++;
+				}
+				if (playerRock == true && computerScissors == true)
+				{
+					game = "Win";
+					playerScore ++;
+
+				}
+				
+				if (playerPaper == true && computerRock == true)
+				{
+					game = "Win";
+					playerScore ++;
+
+				}
+				if (playerPaper == true && computerPaper == true)
+				{
+					game = "draw";
+				}
+				if (playerPaper == true && computerScissors == true)
+				{
+					game = "Loss";
+					computerScore ++;
+
+				}
+				if (playerScissors == true && computerRock == true)
+				{
+					game = "Loss";
+					computerScore ++;
+
+				}
+				if (playerScissors == true && computerPaper == true)
+				{
+					game = "win";
+					playerScore ++;
+				}
+				if (playerScissors == true && computerScissors == true)
+				{
+					game = "draw";
+				}
+				
+				
+				
+				lblGame.setText("The game is a : " + game);
+				
+				
+				
 			}
 		});
 		btnPlay.setBounds(137, 14, 75, 25);
 		btnPlay.setText("Play");
 		
-		Button btnNext = new Button(grpPlay, SWT.NONE);
+		
+		// function for "next" button
+		btnNext.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				btnNext.setEnabled(false);
+				btnPlay.setEnabled(true);
+				grbPlayerChoice.setEnabled(true);
+				lblPlayerScore.setText("Player Score:" + playerScore);
+				lblComputerScore.setText("Computer Score:" + computerScore);
+			}
+		});
+		btnNext.setEnabled(false);
 		btnNext.setBounds(137, 47, 75, 25);
 		btnNext.setText("Next");
 		
-		Group grpComputersChoice = new Group(shell, SWT.NONE);
+		
+		
+		Group grpComputersChoice = new Group(shlRockpaperscissors, SWT.NONE);
+		grpComputersChoice.setBackground(SWTResourceManager.getColor(SWT.COLOR_LINK_FOREGROUND));
 		grpComputersChoice.setBounds(0, 101, 222, 89);
 		grpComputersChoice.setText("Computer's Choice");
 		
 		Button btnComputerScissors = new Button(grpComputersChoice, SWT.RADIO);
+		btnComputerScissors.setEnabled(false);
+		btnComputerScissors.setGrayed(true);
 		btnComputerScissors.setLocation(10, 63);
 		btnComputerScissors.setSize(90, 16);
 		btnComputerScissors.setText("Scissors");
 		
 		Button btnComputerPaper = new Button(grpComputersChoice, SWT.RADIO);
+		btnComputerPaper.setEnabled(false);
+		btnComputerPaper.setGrayed(true);
 		btnComputerPaper.setLocation(10, 41);
 		btnComputerPaper.setSize(90, 16);
 		btnComputerPaper.setText("Paper");
 		
 		Button btnComputerRock = new Button(grpComputersChoice, SWT.RADIO);
+		btnComputerRock.setEnabled(false);
+		btnComputerRock.setGrayed(true);
 		btnComputerRock.setLocation(10, 20);
 		btnComputerRock.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -183,6 +273,7 @@ public class RockPaperScissors {
 		});
 		btnComputerRock.setSize(90, 16);
 		btnComputerRock.setText("Rock");
+		
 
 	}
 }
