@@ -1,3 +1,10 @@
+/*
+ * Created by: Tristan Royer
+ * Created on: Sept-2019
+ * Created for: ICS4U
+ * Day #6 (Simple Calculator)
+ * This program calculates a value using an operation chosen by the user
+*/
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -74,7 +81,9 @@ public class SimpleCalc {
 		btnMinus.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// create variables
 				int number1,number2;
+				// try to get the values from the user
 				try {
 					 number1 = Integer.parseInt(firstNumber.getText());
 					
@@ -93,6 +102,7 @@ public class SimpleCalc {
 					MessageDialog.openError(shell,"Error", "bad second number");
 					return;
 				}
+				// calculate the answer
 				int answer = number1 - number2;
 				lblAnswer.setText("The answer is:" + answer);
 			}
@@ -104,7 +114,10 @@ public class SimpleCalc {
 		btnPlus_1.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// create variables
+
 				int number1,number2;
+				// try to get the values from the user
 				try {
 					 number1 = Integer.parseInt(firstNumber.getText());
 					
@@ -123,6 +136,7 @@ public class SimpleCalc {
 					MessageDialog.openError(shell,"Error", "bad second number");
 					return;
 				}
+				// calculate the answer
 				int answer = number1 + number2;
 				lblAnswer.setText("The answer is:" + answer);
 			}
@@ -134,7 +148,11 @@ public class SimpleCalc {
 		btnMultiply_2.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// create variables
+
 				int number1,number2;
+				// try to get the values from the user
+
 				try {
 					 number1 = Integer.parseInt(firstNumber.getText());
 					
@@ -153,6 +171,8 @@ public class SimpleCalc {
 					MessageDialog.openError(shell,"Error", "bad second number");
 					return;
 				}
+				// calculate the answer
+
 				int answer = number1 * number2;
 				lblAnswer.setText("The answer is:" + answer);
 			}
@@ -164,7 +184,11 @@ public class SimpleCalc {
 		btnDivide_3.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// create variables
+
 				int number1,number2;
+				// try to get the values from the user
+
 				try {
 					 number1 = Integer.parseInt(firstNumber.getText());
 					
@@ -183,6 +207,8 @@ public class SimpleCalc {
 					MessageDialog.openError(shell,"Error", "bad second number");
 					return;
 				}
+				// calculate the answer
+
 				int answer = number1 / number2;
 				lblAnswer.setText("The answer is:" + answer);
 			}

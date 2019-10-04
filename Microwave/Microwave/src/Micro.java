@@ -1,3 +1,10 @@
+/*
+ * Created by: Tristan Royer
+ * Created on: Sept-2019
+ * Created for: ICS4U
+ * Day #7 Microwave
+ * This program gets food items from the user and calculates the time it would take to cook.
+*/
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -79,6 +86,7 @@ public class Micro {
 		radSub.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// assign values to booleans
 				subSelected = true;
 				pizzaSelected = false;
 				soupSelected = false;
@@ -91,6 +99,8 @@ public class Micro {
 		radPizza.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// assign values to booleans
+
 				subSelected = false;
 				pizzaSelected = true;
 				soupSelected = false;
@@ -103,6 +113,7 @@ public class Micro {
 		radSoup.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// assign values to booleans
 				subSelected = false;
 				pizzaSelected = false;
 				soupSelected = true;
@@ -119,9 +130,11 @@ public class Micro {
 		btnOne.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// declare total time variable
+
 				double totalTime ;
 				
-				
+				// get the time to cook
 				if (pizzaSelected == true) 
 				{ 
 					totalTime = 45 * 1 ;
@@ -152,7 +165,11 @@ public class Micro {
 		btnTwo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// declare total time variable
+
 				double totalTime;
+				// get the time to cook
+
 				if (pizzaSelected == true) 
 				{ 
 					totalTime = 45 * 2 * 1.5  ;
@@ -180,7 +197,10 @@ public class Micro {
 		btnThree.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// declare total time variable
 				double totalTime;
+				// get the time to cook
+
 				if (pizzaSelected == true) 
 				{ 
 					totalTime = 45 * 3 * 2  ;

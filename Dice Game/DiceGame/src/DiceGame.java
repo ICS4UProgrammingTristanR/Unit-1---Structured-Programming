@@ -1,3 +1,10 @@
+/*
+ * Created by: Tristan Royer
+ * Created on: Sept-2019
+ * Created for: ICS4U
+ * Day #8 Dice Game
+ * This program rolls dice for the user
+*/
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -10,6 +17,7 @@ import java.util.Random;
 public class DiceGame {
 
 	protected Shell shlDiceGame;
+	// declare globals
 	public int numberOfGuesses = 0;
 	private Text txtRandom;
 	
@@ -80,16 +88,21 @@ public class DiceGame {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// sets the text of the label
 				lblNumberOfGuesses.setText("Number of Guesses: " + numberOfGuesses);
+				// generates a new random number
 				Random rndNumber = new Random();
 				int unknownNumber = (rndNumber.nextInt(9) + 1);
+				// gets the user's guess
 				int userGuess = Integer.parseInt(txtRandom.getText());
+				// sees if the user's guess was the random number
 				if (userGuess == unknownNumber) {
 					numberOfGuesses++;
 					lblNumberOfGuesses.setText("Number of Guesses: " + numberOfGuesses);
 					lblRandomNumber.setText("Random number is:" + unknownNumber);
 					
 					}
+				
 				if (userGuess != unknownNumber)
 				{
 					numberOfGuesses++;
