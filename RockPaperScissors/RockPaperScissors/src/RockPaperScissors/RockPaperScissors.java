@@ -11,6 +11,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 public class RockPaperScissors {
+	// declare public variables
 	public boolean playerRock = false;
 	public boolean playerPaper = false;
 	public boolean playerScissors = false;
@@ -71,6 +72,7 @@ public class RockPaperScissors {
 		btnPlayerRock.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// acknowledges the player chose rock
 				 playerRock = true;
 				 playerPaper = false;
 				 playerScissors = false;
@@ -84,6 +86,8 @@ public class RockPaperScissors {
 		btnPlayerPaper.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// acknowledges the player chose paper
+
 				 playerRock = false;
 				 playerPaper = true;
 				 playerScissors = false;
@@ -96,6 +100,8 @@ public class RockPaperScissors {
 		btnPlayerScissors.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// acknowledges the player chose scissors
+
 				 playerRock = false;
 				 playerPaper = false;
 				 playerScissors = true;
@@ -166,6 +172,7 @@ public class RockPaperScissors {
 					
 				}
 				
+				//checks the choices of the players to see who won
 				if (playerRock == true && computerRock == true)
 				{
 					game = "draw";
@@ -215,7 +222,7 @@ public class RockPaperScissors {
 				}
 				
 				
-				
+				// displays wheter you won or lost
 				lblGame.setText("The game is a : " + game);
 				
 				
